@@ -1,0 +1,18 @@
+[requires]
+boost/1.81.0
+
+[imports]
+dll, *.dll -> ./bin @ folder=True
+bin, *.exe -> ./bin @ folder=True
+bin, *.dll -> ./bin @ folder=True
+bin, *.so* -> ./bin @ folder=True
+bin, *.dylib -> ./bin @ folder=True
+
+
+[layout]
+cmake_layout
+
+
+[generators]
+CMakeToolchain
+CMakeDeps
