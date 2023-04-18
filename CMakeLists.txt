@@ -7,6 +7,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 
 
 if(MSVC)
+  add_compile_options(/MD)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/build/generators")
   list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/build/generators")
 else()
@@ -19,7 +20,6 @@ endif()
 find_package(Boost REQUIRED)
 
 # force MD for all configs
-add_compile_options(/MD)
 add_executable(debed main.cpp)
 
 add_subdirectory(src)

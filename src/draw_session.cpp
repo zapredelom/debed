@@ -10,7 +10,7 @@ void DrawSession::start() {
     do_read_header();
 }
 
-void DrawSession::deliver(const DrawSession::DrawUpdateRawData& msg) {
+void DrawSession::deliver(const DrawUpdateRawData& msg) {
     bool write_in_progress = !write_msgs_.empty();
     write_msgs_.push_back(msg);
     if (!write_in_progress) {
@@ -20,7 +20,7 @@ void DrawSession::deliver(const DrawSession::DrawUpdateRawData& msg) {
 
 void DrawSession::do_read_header() {
     auto self(shared_from_this());
-    boost::asio::async_read(socket_, boost::asio::buffer(read_msg_.data(), DrawSession::DrawUpdateRawData::header_length),
+    boost::asio::async_read(socket_, boost::asio::buffer(read_msg_.data(), DrawUpdateRawData::header_length),
                             [this, self](boost::system::error_code ec, std::size_t /*length*/) {
                                 if (!ec && read_msg_.decode_header()) {
                                     do_read_body();

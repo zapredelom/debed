@@ -13,7 +13,7 @@ public:
     void join(DrawParticipant_ptr participant);
 
     void leave(DrawParticipant_ptr participant);
-    void deliver(const DrawParticipant::DrawUpdateRawData& msg);
+    void deliver(const DrawUpdateRawData& msg);
 
 private:
     std::set<DrawParticipant_ptr> participants_;
