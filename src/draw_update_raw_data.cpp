@@ -1,6 +1,16 @@
 #include "draw_update_raw_data.h"
 
-DrawUpdateRawData::DrawUpdateRawData() : body_length_(0) {}
+DrawUpdateRawData::DrawUpdateRawData() : data_(new char[header_length + max_body_length]),body_length_(0) {}
+
+
+DrawUpdateRawData::DrawUpdateRawData(DrawUpdateRawData&& other) : body_length_(other.body_length_) {
+    data_ = other.data_;
+    other.data_ = nullptr;
+}
+DrawUpdateRawData::DrawUpdateRawData(const DrawUpdateRawData& other) : body_length_(other.body_length_) {
+    data_ = new char[header_length + body_length_];
+    std::memcpy(data_, other.data_, header_length + body_length_);
+}
 
 const char* DrawUpdateRawData::data() const { return data_; }
 
@@ -11,6 +21,7 @@ std::size_t DrawUpdateRawData::length() const { return header_length + body_leng
 const char* DrawUpdateRawData::body() const { return data_ + header_length; }
 
 char* DrawUpdateRawData::body() { return data_ + header_length; }
+
 
 std::size_t DrawUpdateRawData::body_length() const { return body_length_; }
 

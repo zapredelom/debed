@@ -17,6 +17,6 @@ public:
 
 private:
     std::set<DrawParticipant_ptr> participants_;
-    enum { max_recent_msgs = 100 };
+    enum { max_recent_msgs = 10000 };
     DrawParticipant::DrawUpdateQueue recent_msgs_;
 };

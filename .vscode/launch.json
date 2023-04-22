@@ -11,6 +11,12 @@
             "program": "${workspaceFolder}/build/Debug/debed.exe",
             "args": ["8080"],
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "type":"cppvsdbg",
+            "request":"attach",
+            "name":"Attach to process",
+            "processId":"${command:pickProcess}"
         }
     ]
 }

@@ -8,7 +8,6 @@ class DrawRoom;
 
 class DrawParticipant {
 public:
-    //using DrawUpdateRawData = DrawUpdateRawData;
     using DrawUpdateQueue = std::deque<DrawUpdateRawData>;
 
     virtual ~DrawParticipant() {}
